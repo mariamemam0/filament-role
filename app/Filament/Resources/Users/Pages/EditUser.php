@@ -16,4 +16,10 @@ class EditUser extends EditRecord
             DeleteAction::make(),
         ];
     }
+
+
+    protected function getSavedNotificationTitle(): ?string
+{
+    return 'User updated';
+}
 }
