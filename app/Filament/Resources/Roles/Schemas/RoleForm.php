@@ -2,6 +2,7 @@
 
 namespace App\Filament\Resources\Roles\Schemas;
 
+use Filament\Forms\Components\Select;
 use Filament\Forms\Components\TextInput;
 use Filament\Schemas\Components\Section;
 use Filament\Schemas\Schema;
@@ -16,8 +17,15 @@ class RoleForm
                     TextInput::make('name')
                         ->minLength(2)
                         ->maxLength(255)
+                        ->unique(),
+                        
+                    Select::make('permissions')
+                        ->multiple()
+                        ->relationship(name: 'permissions', titleAttribute: 'name')
+                        ->searchable()
+                        ->preload()
                 ])->columnSpanFull(),
-                 
+
             ]);
     }
 }

@@ -2,6 +2,7 @@
 
 namespace App\Filament\Resources\Permissions\Schemas;
 
+use Filament\Forms\Components\Select;
 use Filament\Forms\Components\TextInput;
 use Filament\Schemas\Components\Section;
 use Filament\Schemas\Schema;
@@ -18,7 +19,8 @@ class PermissionForm
                 ->minLength(2)
                 ->maxLength(255)
                 ->required()
-                ->unique(),
+                ->unique(ignoreRecord:true),
+              
             ])->columnSpanFull(),
                 
             ]);

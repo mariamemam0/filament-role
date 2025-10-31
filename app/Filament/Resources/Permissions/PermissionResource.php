@@ -12,6 +12,8 @@ use Filament\Resources\Resource;
 use Filament\Schemas\Schema;
 use Filament\Support\Icons\Heroicon;
 use Filament\Tables\Table;
+use UnitEnum;
+
 use Spatie\Permission\Models\Permission;
 
 class PermissionResource extends Resource
@@ -19,6 +21,13 @@ class PermissionResource extends Resource
     protected static ?string $model = Permission::class;
 
     protected static string|BackedEnum|null $navigationIcon = Heroicon::OutlinedRectangleStack;
+
+
+
+    protected static ?int $navigationSort = 3;
+
+     protected static string | UnitEnum | null $navigationGroup = 'Settings';
+
 
     public static function form(Schema $schema): Schema
     {
