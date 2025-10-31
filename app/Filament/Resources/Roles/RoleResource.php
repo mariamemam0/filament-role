@@ -9,6 +9,7 @@ use App\Filament\Resources\Roles\Schemas\RoleForm;
 use App\Filament\Resources\Roles\Tables\RolesTable;
 
 use BackedEnum;
+use Illuminate\Database\Eloquent\Builder;
 use UnitEnum;
 
 use Filament\Resources\Resource;
@@ -55,4 +56,10 @@ class RoleResource extends Resource
             'edit' => EditRole::route('/{record}/edit'),
         ];
     }
+
+public static function getEloquentQuery(): Builder
+{
+    return parent::getEloquentQuery()
+        ->where('name', '!=','Admin');
+}
 }

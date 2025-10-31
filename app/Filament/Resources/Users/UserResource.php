@@ -35,6 +35,11 @@ class UserResource extends Resource
     {
         return UserForm::configure($schema);
     }
+    public static function mutateFormDataBeforeCreate(array $data): array
+{
+    $data['email_verified_at'] = now();
+    return $data;
+}
 
     public static function table(Table $table): Table
     {
