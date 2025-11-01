@@ -27,6 +27,6 @@ class EnsureCanAccessFilamentPanel
 
     protected function canAccessPanel($user): bool
     {
-        return $user->hasRole(['Admin','auther']);
+        return $user->hasRole(['Admin','writer','moderator']);
     }
 }
