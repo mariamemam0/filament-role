@@ -29,7 +29,7 @@ class PostPolicy
      */
     public function create(User $user): bool
     {
-        return false;
+        return $user->hasRole(['Admin','writer','moderator']);
     }
 
     /**
@@ -37,7 +37,7 @@ class PostPolicy
      */
     public function update(User $user, Post $post): bool
     {
-        return false;
+        return $user->hasRole(['Admin','writer','moderator']);
     }
 
     /**
@@ -45,7 +45,7 @@ class PostPolicy
      */
     public function delete(User $user, Post $post): bool
     {
-        return false;
+        return $user->hasRole(['Admin','moderator']);
     }
 
     /**
