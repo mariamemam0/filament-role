@@ -18,15 +18,15 @@ class EnsureCanAccessFilamentPanel
         $user = $request->user();
 
         // If user is logged in but can't access panel → 403
-        if ($user && ! $this->canAccessPanel($user)) {
-            abort(403, 'You do not have permission to access this admin panel.');
-        }
+       // if ($user && ! $this->canAccessPanel($user)) {
+       //     abort(403, 'You do not have permission to access this admin panel.');
+       // }
 
         return $next($request);
     }
 
-    protected function canAccessPanel($user): bool
-    {
-        return $user->hasRole(['Admin','writer','moderator']);
-    }
+    //protected function canAccessPanel($user): bool
+    //{
+      //  return $user->hasRole(['Admin','writer','moderator']);
+    //}
 }

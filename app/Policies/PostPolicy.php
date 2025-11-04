@@ -13,7 +13,10 @@ class PostPolicy
      */
     public function viewAny(User $user): bool
     {
-        return $user->hasRole(['Admin','writer','moderator']);
+        if($user->hasPermissionTo('view post')){
+          return true;
+    }
+        return false;
     }
 
     /**
@@ -29,15 +32,20 @@ class PostPolicy
      */
     public function create(User $user): bool
     {
-        return $user->hasRole(['Admin','writer','moderator']);
+        if($user->hasPermissionTo('create post')){
+          return true;
+    }
+        return false;
     }
 
     /**
      * Determine whether the user can update the model.
      */
     public function update(User $user, Post $post): bool
-    {
-        return $user->hasRole(['Admin','writer','moderator']);
+    {   if($user->hasPermissionTo('update post')){
+          return true;
+    }
+        return false;
     }
 
     /**
@@ -45,7 +53,10 @@ class PostPolicy
      */
     public function delete(User $user, Post $post): bool
     {
-        return $user->hasRole(['Admin','moderator']);
+        if($user->hasPermissionTo('delete post')){
+          return true;
+    }
+        return false;
     }
 
     /**
